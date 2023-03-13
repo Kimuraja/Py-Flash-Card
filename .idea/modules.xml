@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Py-Flash-Card.iml" filepath="$PROJECT_DIR$/.idea/Py-Flash-Card.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Py-flash-card.iml" filepath="$PROJECT_DIR$/.idea/Py-flash-card.iml" />
     </modules>
   </component>
 </project>
