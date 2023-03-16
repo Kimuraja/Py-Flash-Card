@@ -15,13 +15,18 @@ def guess():
     translation = rand[1]
     canvas.itemconfig(canvas_image, image=front_img)
     canvas.delete("txt")
-    canvas.create_text(400, 263, text=f"{word}", font=("Ariel", 60, "bold"), tags="txt")
+    canvas.delete("enter")
+    canvas.create_text(400, 150, text="Korean", font=("Ariel", 50, "italic"), tags="black_title", fill="black")
+    canvas.create_text(400, 263, text=f"{word}", font=("Ariel", 70, "bold"), tags="txt", fill="black")
+    canvas.create_text(400, 330, text="For latin speakers", font=("Ariel", 15, "bold"), tags="latin", fill="black")
     window.after(3000, swap_bg)
 
-def swap_bg():
 
+def swap_bg():
+    canvas.delete("black_title")
     canvas.itemconfig(canvas_image, image=back_img)
     canvas.delete("txt")
+    canvas.delete("latin")
     canvas.create_text(400, 263, text=f"{translation}", font=("Ariel", 60, "bold"), tags="txt")
     # window.after_cancel(swap)
 
@@ -34,6 +39,8 @@ window.config(pady=50, padx=50, background=BACKGROUND_COLOR)
 
 front_img = PhotoImage(file="images/card_front.png")
 back_img = PhotoImage(file="images/card_back.png")
+
+
 
 # ---------- BUTTONS ---------- #
 
@@ -49,8 +56,8 @@ wrong_button.grid(column=0, row=2)
 canvas = Canvas(width=800, height=526)
 canvas_image = canvas.create_image(400, 263, image=front_img)
 canvas.configure(background=BACKGROUND_COLOR, highlightthickness=0)
-canvas.create_text(400, 150, text="Korean", font=("Ariel", 40, "italic"))
-canvas.create_text(400, 315, text="For latin speakers", font=("Ariel", 13, "bold"))
+canvas.create_text(400, 230, text="Click any button to start", font=("Ariel", 40, "bold"), tags="enter", fill="black")
+canvas.create_text(400, 150, text="English", font=("Ariel", 50, "italic"), tags="title")
 canvas.grid(column=0, row=0, columnspan=2, rowspan=2)
 
 
