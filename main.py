@@ -6,14 +6,25 @@ BACKGROUND_COLOR = "#B1DDC6"
 # ---------------------------- FLASH CARDS ------------------------------- #
 df = pd.read_csv("data/Korea.csv")
 my_list = [i for i in df.to_dict(orient="records")]
-
-
-def random_select():
-    global random_choice
-    random_choice = choice(my_list)
+random_choice = choice(my_list)
 
 
 def good_answer():
+    global random_choice
+    random_choice = choice(my_list)
+    canvas.itemconfig(canvas_image, image=front_img)
+    canvas.delete("txt")
+    canvas.delete("enter")
+    canvas.delete("eng")
+    canvas.create_text(400, 150, text="Korean", font=("Ariel", 50, "italic"), tags="black_title", fill="black")
+    canvas.create_text(400, 263, text=f"{random_choice['symbols']}", font=("Ariel", 70, "bold"), tags="txt",
+                       fill="black")
+    canvas.create_text(400, 330, text="For latin speakers", font=("Ariel", 15, "bold"), tags="latin", fill="black")
+    window.after(3000, swap_bg)
+    my_list.remove(random_choice)
+
+
+def wrong_answer():
     canvas.itemconfig(canvas_image, image=front_img)
     canvas.delete("txt")
     canvas.delete("enter")
@@ -25,17 +36,14 @@ def good_answer():
     window.after(3000, swap_bg)
 
 
-def wrong_answer():
-    random_select()
-
-
 def swap_bg():
     canvas.delete("black_title")
     canvas.itemconfig(canvas_image, image=back_img)
     canvas.delete("txt")
     canvas.delete("latin")
     canvas.create_text(400, 150, text="English", font=("Ariel", 50, "italic"), tags="eng", fill="white")
-    canvas.create_text(400, 263, text=f"{random_choice['translation']}", font=("Ariel", 60, "bold"), tags="txt", fill="white")
+    canvas.create_text(400, 263, text=f"{random_choice['translation']}", font=("Ariel", 60, "bold"), tags="txt",
+                       fill="white")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
