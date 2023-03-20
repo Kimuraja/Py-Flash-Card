@@ -18,12 +18,12 @@ def good_answer():
     canvas.delete("enter")
     canvas.delete("eng")
     canvas.create_text(400, 150, text="Korean", font=("Ariel", 50, "italic"), tags="black_title", fill="black")
-    canvas.create_text(400, 263, text=f"{random_choice['Korean']}", font=("Ariel", 70, "bold"), tags="txt",
+    canvas.create_text(400, 263, text=f"{random_choice['Word']}", font=("Ariel", 70, "bold"), tags="txt",
                        fill="black")
     canvas.create_text(400, 330, text="For latin speakers", font=("Ariel", 15, "bold"), tags="latin", fill="black")
     window.after(3000, swap_bg)
     my_list.remove(random_choice)
-    new_df.to_csv('./data/words_to_learn.csv')
+    new_df.to_csv('./data/words_to_learn.csv', index=False)
 
 
 def wrong_answer():
@@ -32,7 +32,7 @@ def wrong_answer():
     canvas.delete("enter")
     canvas.delete("eng")
     canvas.create_text(400, 150, text="Korean", font=("Ariel", 50, "italic"), tags="black_title", fill="black")
-    canvas.create_text(400, 263, text=f"{random_choice['Korean']}", font=("Ariel", 70, "bold"), tags="txt",
+    canvas.create_text(400, 263, text=f"{random_choice['Word']}", font=("Ariel", 70, "bold"), tags="txt",
                        fill="black")
     canvas.create_text(400, 330, text="For latin speakers", font=("Ariel", 15, "bold"), tags="latin", fill="black")
     window.after(3000, swap_bg)
@@ -44,8 +44,9 @@ def swap_bg():
     canvas.delete("txt")
     canvas.delete("latin")
     canvas.create_text(400, 150, text="English", font=("Ariel", 50, "italic"), tags="eng", fill="white")
-    canvas.create_text(400, 263, text=f"{random_choice['English']}", font=("Ariel", 60, "bold"), tags="txt",
+    canvas.create_text(400, 263, text=f"{random_choice['Eng']}", font=("Ariel", 60, "bold"), tags="txt",
                        fill="white")
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
